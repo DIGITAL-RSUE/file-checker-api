@@ -43,10 +43,7 @@ JWT_AUTH_COOKIE = "access_token"
 # OLD_PASSWORD_FIELD_ENABLED = True
 # LOGOUT_ON_PASSWORD_CHANGE = True
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:9000",
-    "http://127.0.0.1:9000",
-]
+CORS_ALLOW_ALL_ORIGINS = True
 
 REST_AUTH_SERIALIZERS = {
     "USER_DETAILS_SERIALIZER": "apps.api.auth.v1.serializers.UserDetailsSerializer",
