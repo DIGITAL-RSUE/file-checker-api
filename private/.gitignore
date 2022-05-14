@@ -1,0 +1,6 @@
+*
+!.gitignore
+!logs/
+!media/
+!locale/
+!locale/**

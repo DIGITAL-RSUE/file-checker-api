@@ -1,0 +1,50 @@
+# Dependency directories
+node_modules/
+bower_components/
+jspm_packages/
+
+# Docker volumes folder
+/docker/
+/.docker/
+
+dist/
+webpack-stats.json
+
+# Virtual environment
+venv/
+env/
+.venv/
+.env/
+
+# DotENV environment variables file
+.env
+.env.local
+.env.production
+
+# Byte-compiled / optimized / DLL files
+**/__pycache__/*
+**/*.py[cod]
+
+# Translations
+**/*.mo
+**/*.pot
+
+# Log files
+**.log
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sublime-workspace
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Lock files
+Pipfile.lock
+package-lock.json
