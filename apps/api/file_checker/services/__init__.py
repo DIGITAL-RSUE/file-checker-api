@@ -1,4 +1,3 @@
+from .check_vulnerabilities import CheckVulnerabilities
 
-__all__ = (
-
-)
+__all__ = ("CheckVulnerabilities",)

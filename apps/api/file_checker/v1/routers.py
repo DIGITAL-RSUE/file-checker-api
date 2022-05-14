@@ -1,5 +1,9 @@
-# from django.urls import include, path
+from django.urls import path
+
+from .views import FileCheckAPIView
 
 app_name = "file_checker"
 
-urlpatterns = []
+urlpatterns = [
+    path("", FileCheckAPIView.as_view()),
+]
