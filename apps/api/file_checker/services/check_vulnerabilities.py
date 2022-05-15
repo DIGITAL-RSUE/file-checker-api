@@ -36,14 +36,13 @@ class CheckVulnerabilities(Service):
             "pptm",
         ],
     }
-    messages = []
 
     file_for_check = forms.Field()
 
     def process(self):
         file_for_check = self.cleaned_data["file_for_check"]
-        self.run_test(file_for_check)
-        return list(set(self.messages))
+        result = self.run_test(file_for_check)
+        return result
 
     def compare_test(self, file_extension):
         test_list = []
@@ -58,8 +57,11 @@ class CheckVulnerabilities(Service):
         file_data = file_for_check.read()
         file_extension = get_file_extension(file_name)
         test_list = self.compare_test(file_extension)
+        messages = []
         for test in test_list:
             results = test(file_name, file_data, file_for_check=file_for_check)
             if results:
                 for result in results:
-                    self.messages.append(result)
+                    messages.append(result)
+
+        return list(set(messages))
