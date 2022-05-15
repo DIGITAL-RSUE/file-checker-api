@@ -21,6 +21,10 @@ class FileCheckAPIView(APIView):
             }
         )
         return Response(
-            {"checked_file": messages},
+            {
+                "checked_file": messages
+                if messages
+                else {"messages": ["Файл безопасен!"], "status": "success"}
+            },
             status=status.HTTP_200_OK,
         )

@@ -2,6 +2,7 @@ from django import forms
 from service_objects.services import Service
 
 from ..utils import (
+    ErrorMessages,
     check_macro_in_ole_files,
     find_js_in_pdf,
     get_file_extension,
@@ -63,5 +64,19 @@ class CheckVulnerabilities(Service):
             if results:
                 for result in results:
                     messages.append(result)
+        messages = self.compile_messages(list(set(messages)))
 
-        return list(set(messages))
+        return messages
+
+    def compile_messages(self, messages):
+        messages = messages
+        if (
+            ErrorMessages.COMBINED_FILE in messages
+            or ErrorMessages.CORRUPTED_FILE in messages
+            or ErrorMessages.HAS_VIRUS_MACRO in messages
+            or ErrorMessages.HAS_JS in messages
+        ):
+            messages = {"messages": messages, "status": "error"}
+        elif ErrorMessages.HAS_MACRO_BUT_OK in messages:
+            messages = {"messages": messages, "status": "warning"}
+        return messages
